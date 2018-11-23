@@ -26,7 +26,7 @@
             ],
 
             "xAxisLabel":"",
-            "xAxisScale":"auto_zero_max",
+            "xAxisScale":[0,800000],
             "xAxisBreak": true,
             "xAxisBreak_sm_md_lg": [65,65,65]
     },
