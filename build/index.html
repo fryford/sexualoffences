@@ -625,6 +625,7 @@ function changeDetails(counter) {
 
   d3.select(".sectiontitle").text(dvc.detailstext.sectiontitle[counter]);
   d3.select(".headertext").text(dvc.detailstext.headertitles[counter]);
+  d3.select(".source").attr("href", dvc.sources.urls[counter]).text(dvc.sources.description[counter]);
   d3.select(".detailtext").text(dvc.detailstext.details[counter]);
 
   d3.selectAll(".bars").classed("groups",true);
@@ -638,6 +639,10 @@ function changeDetails(counter) {
   d3.selectAll(".textcircle-" + (counter-1)).classed("textcirclefade", false);
 
   if(counter == 0) {
+    d3.select("#start").style("display","block");
+    d3.select("#next").style("display","none");
+    d3.select("#back").style("display","none");
+
     d3.selectAll(".bars").classed("groups",false);
     d3.selectAll(".textcircle").classed("textcirclefade",false);
     d3.selectAll(".circles").classed("circlesfade",false);
