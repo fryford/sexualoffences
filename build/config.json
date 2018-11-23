@@ -1,0 +1,58 @@
+{
+    "essential" : {
+            "graphic_data_url": "data.csv",
+
+            "dateFormat":"",
+
+            "legendLabels" : ["Rapes","All other offences"],
+
+            "sourceText":["2011 Census, Office for National Statistics"],
+            "sourceURL":["http://www.ons.gov.uk/ons/rel/census/2011-census-analysis/overcrowding-and-under-occupation-in-england-and-wales/index.html"],
+
+            "annotationChart": ["Victims","Offences","Offenders"],
+            "annotationBullet": [""],
+            "annotationXY":[
+                [820000,"Estimated  victims" ],[820000,"Recorded  by police" ],[820000,"Offenders  convicted"]
+
+            ],
+            "annotationAlign":[
+                "start","start","start"
+            ],
+
+            "circles" : false,
+            "annotationCXCY":[
+                ["60","Social  rented"]
+
+            ],
+
+            "xAxisLabel":"",
+            "xAxisScale":"auto_zero_max",
+            "xAxisBreak": true,
+            "xAxisBreak_sm_md_lg": [65,65,65]
+    },
+    "optional" : {
+            "margin_sm": [20, 30, 55, 150],
+            "margin_md": [20, 100, 55, 150],
+            "margin_lg": [20, 100, 55, 150],
+
+            "aspectRatio_sm" : [16,24],
+            "aspectRatio_md" : [16,12],
+            "aspectRatio_lg" : [16,10],
+
+            "mobileBreakpoint" : 610,
+
+            "x_num_ticks_sm_md_lg" : [2,4,4]
+
+    },
+    "detailstext" : {
+            "sectiontitle": [["Sexual offences: from incident to conviction"],["Estimated offences"],["Offences reported to the police"],["Police recorded sexual offences"],["Suspects charged"],["Offenders convicted"],[""],[""]],
+            "headertitles": [["first title"],["second title"],["3rd title"],["3rd title"],["3rd title"],["3rd title"],["3rd title"]],
+            "details": [["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularise"],
+            ["t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page edito"],["t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page edito"],[],[],[],[]]
+    },
+    "sources" : {
+            "description": [["Office for National Statistics"],["Office for National Statistics"],["Office for National Statistics"],["3rd title"],["3rd title"],["3rd title"],["3rd title"]],
+            "urls": [["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularise"],
+            ["t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page edito"],["t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page edito"],[],[],[],[]]
+    }
+}
