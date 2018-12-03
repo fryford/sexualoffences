@@ -111,7 +111,7 @@
         #graphic .axis  /* required */
 		{
             font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             fill: #666;
         }
 
@@ -148,6 +148,11 @@
             shape-rendering: crispEdges;
         }
 
+        #graphic .axis .tick line /* required */
+        {
+            stroke: none;
+            shape-rendering: crispEdges;
+        }
 
 
 		/* ploted graph line */
@@ -165,7 +170,7 @@
         #graphic .key li/* required */
 		{
             display: block;
-            margin: 6px 18px 0 0;
+            margin: 8px 18px 0 0;
             padding: 0;
             line-height: 15px;
         }
@@ -190,7 +195,7 @@
         #graphic .key label/* required */
 		{
             white-space: nowrap;
-            font-size: 12px;
+            font-size: 16px;
             color: #333;
             font-weight: normal;
         }

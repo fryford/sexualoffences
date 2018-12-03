@@ -166,13 +166,15 @@
         font-weight:bold;
         color: #323132;
         margin-bottom:10px;
+        margin-top:15px;
       }
 
-      .detailtext {
+      .detailtext, .introtext {
         font-family: "Open Sans";
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
+        margin-bottom:10px;
       }
 
 
@@ -227,9 +229,10 @@
 
       .sectiontitle {
         font-family:"Open Sans";
-        font-size:20px;
+        font-size:24px;
         color: #323132;
         font-weight:700;
+        margin-bottom: 10px;
       }
 
       .controls {
@@ -248,6 +251,56 @@
       .key-3 b {margin-top:0px !important; width: 15px !important; background-color: #274796; }
       .key-4 b {margin-top:0px !important; width: 15px !important; background-color: #979796; }
 
+      .footer2 {
+        display:none;
+      }
+
+      @media (max-width:791px) {
+
+        .sectiontitle{
+            font-size:24px;
+            font-weight:600;
+        }
+
+        .footer {
+          display:none;
+        }
+
+        .footer2 {
+          display:block;
+          font-size:14px;
+        }
+
+        .key {
+          width:100%;
+
+        }
+
+        #graphic .key label {
+          font-size: 16px;
+        }
+
+        #graphic .axis {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 14px;
+        }
+
+        .headertext {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .detailtext, .introtext {
+            font-family: "Open Sans";
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin-bottom: 10px;
+        }
+
+
+      }
+
     </style>
 
 </head>
@@ -255,6 +308,9 @@
 
 	<div id="graphic">
     	<img src="fallback.png" alt="[Chart]" />
+    </div>
+
+    <div class="source2">
     </div>
 
    <div class="details">
@@ -354,6 +410,11 @@ function drawGraphic(width) {
       .attr("class","sectiontitle")
       .text(dvc.detailstext.sectiontitle[counter]);
 
+  d3.select('#graphic')
+      .append("h3")
+      .attr("class","introtext")
+      .text("Understanding the flow of the criminal justice system is important in order to.....Cras id magna iaculis, condimentum libero vitae, egestas nisl. Pellentesque euismod, mi eget viverra tincidunt, ligula nunc dapibus ex, nec maximus justo urna id magna. Phasellus eros sapien, lacinia eu pulvinar at, dignissim vel neque. Nulla tincidunt mollis urna, at consectetur odio suscipit ac. Donec feugiat sem id molestie condimentum. M");
+
 	var legend = d3.select('#graphic')
           .append('ul')
 					.attr('class', 'key')
@@ -367,6 +428,15 @@ function drawGraphic(width) {
                   .html("Source: <br>")
                   .append("a")
                   .attr("class","source")
+                  .attr("href", dvc.sources.urls[0])
+                  .attr("target", "_blank")
+                  .text(dvc.sources.description[0]);
+
+  var source2 = d3.select('.source2').append("div")
+                  .attr("class","footer2")
+                  .html("Source: ")
+                  .append("a")
+                  .attr("class","source3")
                   .attr("href", dvc.sources.urls[0])
                   .attr("target", "_blank")
                   .text(dvc.sources.description[0]);
@@ -408,11 +478,13 @@ function drawGraphic(width) {
     svg.append('g')
         .attr('class', 'x axis')
         .call(yAxis)
+        .style("text-anchor", "start")
+        .attr("transform","translate(" + (-margin.left+11+45) + ",0)")
 	 .append("text")
 		 .attr("y", height+23)
 		 .attr("x",chart_width)
 		 .attr("dy", ".71em")
-		 .style("text-anchor", "end")
+		 .style("text-anchor", "start")
 		 .text(dvc.essential.xAxisLabel);
 
     svg.append('g')
@@ -473,8 +545,8 @@ function drawGraphic(width) {
 
     svg.append("line")
       .attr("class","navline")
-      .attr("x1",x(0) - margin.left + 30)
-      .attr("x2",x(0) - margin.left + 30)
+      .attr("x1",x(0) - margin.left + 15)
+      .attr("x2",x(0) - margin.left + 15)
       .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
       .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
@@ -485,7 +557,7 @@ function drawGraphic(width) {
         .enter()
         .append("circle")
         .attr("class", function(d,i) {return "circles circles-" + i})
-        .attr("cx", x(0) - margin.left + 30)
+        .attr("cx", x(0) - margin.left + 15)
         .attr("cy", function(d,i) {return y(d.cat) + y.bandwidth()/2})
         .attr("r", 13)
 
@@ -495,7 +567,7 @@ function drawGraphic(width) {
       .enter()
       .append("text")
       .attr("class", function(d,i) {return "textcircle textcircle-" + i})
-      .attr("x", x(0) - margin.left + 30)
+      .attr("x", x(0) - margin.left + 15)
       .attr("y", function(d,i) {return y(d.cat) + y.bandwidth()/2 + 5})
       .attr("text-anchor", "middle")
       .text(function(d,i){return i+1});
@@ -600,8 +672,7 @@ function drawGraphic(width) {
 
 
 
-			d3.selectAll(".x text").attr("y",-6).each(insertLinebreaksLabels)
-
+			d3.selectAll(".x text").attr("y",-9).each(insertLinebreaksLabels)
 
 
 		}// end function writeAnnotation()
@@ -647,6 +718,8 @@ function changeDetails(counter) {
     d3.select("#start").style("display","none");
     d3.select("#next").style("display","block");
     d3.select("#back").style("display","block");
+    d3.select(".introtext").style("display","none");
+
   }
 
   if(counter == 6){
@@ -656,6 +729,7 @@ function changeDetails(counter) {
   d3.select(".sectiontitle").text(dvc.detailstext.sectiontitle[counter]);
   d3.select(".headertext").text(dvc.detailstext.headertitles[counter]);
   d3.select(".source").attr("href", dvc.sources.urls[counter]).text(dvc.sources.description[counter]);
+  d3.select(".source3").attr("href", dvc.sources.urls[counter]).text(dvc.sources.description[counter]);
   d3.select(".detailtext").text(dvc.detailstext.details[counter]);
 
   d3.selectAll(".bars").classed("groups",true);
@@ -668,10 +742,12 @@ function changeDetails(counter) {
   d3.selectAll(".textcircle").classed("textcirclefade",true);
   d3.selectAll(".textcircle-" + (counter-1)).classed("textcirclefade", false);
 
+
   if(counter == 0) {
     d3.select("#start").style("display","block");
     d3.select("#next").style("display","none");
     d3.select("#back").style("display","none");
+    d3.select(".introtext").style("display","block");
 
     d3.selectAll(".bars").classed("groups",false);
     d3.selectAll(".textcircle").classed("textcirclefade",false);
@@ -684,10 +760,20 @@ function changeDetails(counter) {
   }
 
   if(counter == 1) {
+
+    y.domain(graphic_data.map(function(d) {
+      return d.cat;
+    }));
+
+
     d3.selectAll(".annotext0, .annotext1, .annotext2")
       .transition()
       .duration(500)
       .style("opacity",0);
+
+      d3.select(".navline")
+          .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
+          .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
   }
 
@@ -730,7 +816,7 @@ function changeDetails(counter) {
             .tickFormat('')
         );
 
-      d3.selectAll(".x text").attr("y",-6).each(insertLinebreaksLabels)
+      d3.selectAll(".x text").attr("y",-9).each(insertLinebreaksLabels)
 
       d3.selectAll(".bars")
         .transition()
@@ -769,6 +855,9 @@ function changeDetails(counter) {
         .duration(500)
         .attr("y", function(d,i) {return y(d.cat) + y.bandwidth()/2 + 5})
 
+      d3.select(".navline")
+          .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
+          .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
       d3.select(".breaklines2")
         .transition()
@@ -846,7 +935,7 @@ function changeDetails(counter) {
             .tickFormat('')
         );
 
-      d3.selectAll(".x text").attr("y",-6).each(insertLinebreaksLabels)
+      d3.selectAll(".x text").attr("y",-9).each(insertLinebreaksLabels)
 
       d3.selectAll(".bars")
         .transition()
@@ -874,6 +963,10 @@ function changeDetails(counter) {
 
   			}
   	  })
+
+      d3.select(".navline")
+          .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
+          .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
       d3.selectAll(".circles")
         .transition()
@@ -982,13 +1075,18 @@ function changeDetails(counter) {
             .tickFormat('')
         );
 
-      d3.selectAll(".x text").attr("y",-6).each(insertLinebreaksLabels)
+      d3.selectAll(".y .tick").attr("transform","translate(-1)").each(insertLinebreaksLabels)
+
+      d3.selectAll(".x text").attr("y",-9).each(insertLinebreaksLabels)
 
       d3.selectAll(".bars")
         .transition()
         .duration(500)
         .attr("transform", function(d) { return "translate(0," + y(d.cat) + ")"; });
 
+      d3.select(".navline")
+          .attr("y1",y("Recorded  by police") + y.bandwidth()/2)
+          .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
       d3.selectAll(".indbars")
         .transition()
@@ -1010,6 +1108,11 @@ function changeDetails(counter) {
 
         }
       })
+
+
+      d3.select(".navline")
+        .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
+        .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
       d3.selectAll(".circles")
         .transition()
@@ -1091,13 +1194,17 @@ function changeDetails(counter) {
             .tickFormat('')
         );
 
-      d3.selectAll(".x text").attr("y",-6).each(insertLinebreaksLabels)
+      d3.selectAll(".x text").attr("y",-9).each(insertLinebreaksLabels)
 
       d3.selectAll(".bars")
         .transition()
         .duration(500)
         .attr("transform", function(d) { return "translate(0," + y(d.cat) + ")"; });
 
+
+      d3.select(".navline")
+          .attr("y1",y("Estimated  victims") + y.bandwidth()/2)
+          .attr("y2",y("Offenders  convicted") + y.bandwidth()/2)
 
       d3.selectAll(".indbars")
         .transition()
@@ -1180,7 +1287,7 @@ function insertLinebreaksLabels() {
           if (j > 0)
             tspan
             .attr('x', -10)
-            .attr('dy', '1em');
+            .attr('dy', '1.1em');
             }
 };
 

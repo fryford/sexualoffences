@@ -31,11 +31,11 @@
             "xAxisBreak_sm_md_lg": [65,65,65]
     },
     "optional" : {
-            "margin_sm": [20, 30, 55, 150],
-            "margin_md": [20, 100, 55, 150],
-            "margin_lg": [20, 100, 55, 150],
+            "margin_sm": [20, 30, 25, 135],
+            "margin_md": [20, 100, 25, 135],
+            "margin_lg": [20, 100, 25, 135],
 
-            "aspectRatio_sm" : [16,24],
+            "aspectRatio_sm" : [16,36],
             "aspectRatio_md" : [16,12],
             "aspectRatio_lg" : [16,10],
 
