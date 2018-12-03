@@ -730,7 +730,7 @@ function changeDetails(counter) {
   d3.select(".headertext").text(dvc.detailstext.headertitles[counter]);
   d3.select(".source").attr("href", dvc.sources.urls[counter]).text(dvc.sources.description[counter]);
   d3.select(".source3").attr("href", dvc.sources.urls[counter]).text(dvc.sources.description[counter]);
-  d3.select(".detailtext").text(dvc.detailstext.details[counter]);
+  d3.select(".detailtext").html(dvc.detailstext.details[counter]);
 
   d3.selectAll(".bars").classed("groups",true);
   d3.selectAll(".group-" + (counter-1)).classed("groups", false);
